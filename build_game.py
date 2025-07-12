@@ -2,7 +2,7 @@
 ##  `build_game.py`                                                          ##
 ##                                                                           ##
 ##  Creator: Adrien Lynch (GitHub: aadriien)                                 ##
-##  Purpose: Assembles multiple .lua files (code) into single pico-8 file    ##
+##  Purpose: Assembles multiple .lua files into single .p8 file (PICO-8)     ##
 ##  Notes: Preserves graphics and map data by only editing code section      ##
 ###############################################################################
 
