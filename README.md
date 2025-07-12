@@ -1,8 +1,8 @@
-# 🎮👾 Pico-8
+# 🎮👾 Pico-8 DevBuddy
 
 ## Description
 
-A series of helpers and utilies designed to improve the developer experience on Pico-8
+A series of helpers and utilies designed to improve the developer experience on Pico-8!
 
 
 ### Prerequisites
@@ -28,6 +28,6 @@ python3 build_game.py
 
 This script will ONLY rewrite the code section, so you can rest assured that your Pico-8 graphics and map data will remain untouched. Put simply, you can update the core functionality and logical flow while still preserving game aesthetics.  
 
-<img src="build_game.png" alt="build_game helper util" width="250"/>
+<img src="build_game.png" alt="build_game helper util" width="400"/>
 
 
