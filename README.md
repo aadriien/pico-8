@@ -18,9 +18,12 @@ Tired of searching through your lengthy `.p8` file for snippets of code? Wish yo
 Simply run the following from your project directory:
 
 ```sh
-# Confirm .p8 file AND .lua files present at root
-ls
+# Clone the repository, then navigate to it
+git clone https://github.com/aadriien/pico-8.git
+cd pico-8
 
+# Confirm .p8 file AND .lua files present at root, then run
+ls
 python3 build_game.py
 ```
 
