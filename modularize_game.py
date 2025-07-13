@@ -3,7 +3,7 @@
 ##                                                                           ##
 ##  Creator: Adrien Lynch (GitHub: aadriien)                                 ##
 ##  Purpose: Separates single .p8 file (PICO-8) into multiple .lua files     ##
-##  Notes: Preserves graphics and map data by only editing code section      ##
+##  Notes: Only pulls from code section, and leaves .p8 file untouched       ##
 ###############################################################################
 
 

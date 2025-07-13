@@ -27,10 +27,12 @@ cd pico8-devbuddy
 ## Features
 
 ### Modular programming with separate files
-Tired of searching through your lengthy `.p8` file for snippets of code? Wish you could just break sections down into manageable chunks? `build_game.py` and `modularize_game.py` have you covered!
+Tired of searching through your lengthy `.p8` file for snippets of code? Wish you could just break sections down into manageable chunks? [`build_game.py`](#build_gamepy) and [`modularize_game.py`](#modularize_gamepy) have you covered!
 
 
-#### `build_game.py` —> assemble Lua modules into PICO-8 file
+#### `build_game.py` 
+**Assemble multiple Lua modules into single PICO-8 file**
+
 Once [set up](#setup), simply run:
 
 ```sh
@@ -47,7 +49,9 @@ This build script will **ONLY rewrite the code section**, so you can rest assure
 <img src="build_game.png" alt="build_game helper util" width="500"/>
 
 
-#### `modularize_game.py` —> disassemble PICO-8 file into Lua modules
+#### `modularize_game.py`
+**Disassemble single PICO-8 file into multiple Lua modules**
+
 Once [set up](#setup), simply run:
 
 ```sh
