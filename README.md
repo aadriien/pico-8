@@ -13,7 +13,7 @@ A series of helpers and utilies designed to **improve the developer experience**
 ## Features
 
 ### Modular programming with separate files
-Tired of searching through your lengthy `.p8` file for snippets of code? Wish you could just break sections down into manageable chunks? `build-game.py` has you covered!
+Tired of searching through your lengthy `.p8` file for snippets of code? Wish you could just break sections down into manageable chunks? `build_game.py` has you covered!
 
 Simply run the following from your project directory:
 
