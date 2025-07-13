@@ -8,6 +8,8 @@
 
 
 import os
+import re
+from typing import Optional
 
 
 def find_files() -> tuple[str, list[str]]:
@@ -49,7 +51,6 @@ def read_and_parse(p8_file: str) -> tuple[str, str]:
     header = parts[0] # content before __lua__
     rest = parts[1] # content after __lua__
 
-    # Find where next section after __lua__ starts (gfx, gff, map, etc)
     section_headers = [
         "__gfx__",
         "__gff__",
@@ -60,6 +61,7 @@ def read_and_parse(p8_file: str) -> tuple[str, str]:
         "__cartdata__"
     ]
 
+    # Find where next section after __lua__ starts (gfx, gff, map, etc)
     next_section_pos = None
     for header_name in section_headers:
         pos = rest.find(header_name)
@@ -87,13 +89,22 @@ def strip_leading_trailing_blank_lines(text: str) -> str:
     return "\n".join(lines)
 
 
-def ensure_tab_marker(content: str) -> str:
-    # Ensure PICO-8 tab marker (-->8) at top of file for native editor
+def ensure_tab_marker(content: str, filename: Optional[str] = None) -> str:
     lines = content.splitlines()
-    lines = [line for line in lines if line.strip() != "-->8"]
-    lines.insert(0, "-->8")
 
-    return "\n".join(lines)
+    # Remove any existing PICO-8 tab marker (-->8) & filename comment
+    lines = [
+        line for line in lines
+        if line.strip() != "-->8" and not re.match(r"-- >>> .* <<<", line.strip())
+    ]
+
+    # Rebuild with -->8 tab marker & optional filename comment
+    new_lines = ["-->8"]
+    if filename:
+        new_lines.append(f"-- >>> {filename} <<<")
+    new_lines.extend(lines)
+
+    return "\n".join(new_lines)
 
 
 def write_assembled_code(p8_file: str, include_files: list[str], 
@@ -105,11 +116,10 @@ def write_assembled_code(p8_file: str, include_files: list[str],
         with open(file_name, "r", encoding="utf-8") as f:
             # Read contents, stripping trailing spaces & newlines 
             content = f.read()
-            content = strip_leading_trailing_blank_lines(content)
+            content = strip_leading_trailing_blank_lines(text=content)
             
-            # Add filename comment, then ensure PICO-8 tab marker at top (-->8) 
-            content = f"-- >>> {file_name} <<<\n{content}"
-            content = ensure_tab_marker(content)
+            # Add filename comment & ensure PICO-8 tab marker at top (-->8) 
+            content = ensure_tab_marker(content=content, filename=file_name)
 
             lua_code += content + "\n\n\n"
 
