@@ -44,6 +44,8 @@ python3 build_game.py
 
 `build_game.py` will find your `.p8` file, along with any / all `.lua` files. It will assemble the Lua code from each included module into one large block of code, which it will then inject into `.p8`. 
 
+Importantly, `build_game.py` will also preface each injected module with the PICO-8 tab marker (`-->8`), allowing you to carry your sections over into the native editor—something an `#include` statement alone can't do!
+
 This build script will **ONLY rewrite the code section**, so you can rest assured that your PICO-8 **graphics and map data will remain untouched**. Put simply, you can update the core functionality and logical flow while still preserving game aesthetics.  
 
 <img src="build_game.png" alt="build_game helper util" width="500"/>
